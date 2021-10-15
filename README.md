@@ -20,14 +20,14 @@ The *twarc* utility and python library handles and is designed to be used this w
 
 ## List of Scripts
 
-**fetchdata-justids.py** - Takes JSON list as input and fetches the IDs of followers/following, output to directory
-**ids2json.py** - Converts directory of IDs to JSON, using Redis to cache looked up accounts
-**dumpredis.py** - Dumps all the Twitter accounts from redis to *redis.json.xz*
-**json2csv_user_directory.py** - Converts directory of JSON lists of accounts to csv format
-**json2csv_user.py** - Convert a JSON list of accounts to CSV format.
-**jsondiff.py** - Compares two JSON lists of accounts for differences, and displays them.
-**jsonsame.py** - Compares two JSON lists of accounts, and displays entries that are the same.
-**grabuser.sh** - Grabs the IDs and Metadata in JSON of an account's followers and following.
+* **fetchdata-justids.py** - Takes JSON list as input and fetches the IDs of followers/following, output to directory
+* **ids2json.py** - Converts directory of IDs to JSON, using Redis to cache looked up accounts
+* **dumpredis.py** - Dumps all the Twitter accounts from redis to *redis.json.xz*
+* **json2csv_user_directory.py** - Converts directory of JSON lists of accounts to csv format
+* **json2csv_user.py** - Convert a JSON list of accounts to CSV format.
+* **jsondiff.py** - Compares two JSON lists of accounts for differences, and displays them.
+* **jsonsame.py** - Compares two JSON lists of accounts, and displays entries that are the same.
+* **grabuser.sh** - Grabs the IDs and Metadata in JSON of an account's followers and following.
 
 ## Configuration
 The Twitter API Keys is stored as standard JSON file with the following format.
