@@ -23,17 +23,10 @@
 import json
 import argparse
 
-parser = argparse.ArgumentParser(description='Same accounts between two JSON lists of Twitter Accounts', epilog='P.S. Trust The Plan')
-parser.add_argument('input1', help='JSON File', type=argparse.FileType('r', encoding='utf-8'))
-parser.add_argument('input2', help='JSON File', type=argparse.FileType('r', encoding='utf-8'))
+parser = argparse.ArgumentParser(description='Timeline in JSON to list of URLS', epilog='P.S. Trust The Plan')
+parser.add_argument('--input', help='JSON File', type=argparse.FileType('r', encoding='utf-8'), required=True)
 args = parser.parse_args()
 
-accs1 = []
-for line in args.input1:
+for line in args.input:
     j = json.loads(line)
-    accs1.append(j['id'])
-
-for line in args.input2:
-    j = json.loads(line)
-    if j['id'] in accs1:
-        print(j['screen_name'])
+    print(f"https://www.twitter.com/{j['user']['screen_name']}/status/{j['id_str']}")

@@ -22,18 +22,20 @@
 
 import json
 import argparse
+import redis
+import sys
+import glob
 
-parser = argparse.ArgumentParser(description='Same accounts between two JSON lists of Twitter Accounts', epilog='P.S. Trust The Plan')
-parser.add_argument('input1', help='JSON File', type=argparse.FileType('r', encoding='utf-8'))
-parser.add_argument('input2', help='JSON File', type=argparse.FileType('r', encoding='utf-8'))
+r = redis.Redis()
+
+def process(f):
+    for line in f:
+        j = json.loads(line)
+        if r.exists(f"TWITUSER{j['id_str']}") == 0:
+            r.set(f"TWITUSER{j['id_str']}", line.strip(), 28800) # 8 hours = 28800
+
+parser = argparse.ArgumentParser(description='Convert IDs to JSON', epilog='P.S. Trust The Plan')
+parser.add_argument('file', help='List user ids to fetch followers & following, or stdin if not specified', type=argparse.FileType('r', encoding='utf-8'), default=sys.stdin)
 args = parser.parse_args()
 
-accs1 = []
-for line in args.input1:
-    j = json.loads(line)
-    accs1.append(j['id'])
-
-for line in args.input2:
-    j = json.loads(line)
-    if j['id'] in accs1:
-        print(j['screen_name'])
+process(args.file)

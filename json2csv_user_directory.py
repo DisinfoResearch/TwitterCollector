@@ -48,7 +48,7 @@ parser = argparse.ArgumentParser(description='Convert JSON to pretty CSV', epilo
 parser.add_argument('out', help='Path to directory', type=str, default="")
 args = parser.parse_args()
 
-for e in glob.glob(args.out+'/*.json'):
-    with open(e, 'r') as fin, open(e.replace('json', 'csv'), 'w') as fou:
-        print("PROCESSING -> "+e)
+for e in glob.glob(f"{args.out}/*.json"):
+    with open(e, 'r', encoding='UTF-8') as fin, open(e.replace('json', 'csv'), 'w', encoding='UTF-8') as fou:
+        print(f"PROCESSING -> {e}")
         process(fin, fou)

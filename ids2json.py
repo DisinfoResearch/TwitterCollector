@@ -41,18 +41,18 @@ r = redis.Redis()
 def fetchncheck(ids):
     toget = []
     for i in ids:
-        if r.exists('TWITUSER'+i) == 0:
+        if r.exists(f"TWITUSER{i}") == 0:
             toget.append(i)
     try: # Sometimes all these user ids can be suspended / deactivated or protected, causing 404/403 exception throws
         for i in twarc.user_lookup(toget, id_type='user_id'):
-            r.set('TWITUSER'+i['id_str'], json.dumps(i)) # 8 hours = 28800
+            r.set(f"TWITUSER{i['id_str']}", json.dumps(i), 28800) # 8 hours = 28800
     except requests.exceptions.HTTPError:
         pass
 
 def pullfromredis(ids):
     ret = []
     for i in ids:
-        u = r.get('TWITUSER'+i)
+        u = r.get(f"TWITUSER{i}")
         if u != None:
             ret.append(u.decode('utf-8'))
     return ret
@@ -61,14 +61,14 @@ parser = argparse.ArgumentParser(description='Convert IDs to JSON', epilog='P.S.
 parser.add_argument('out', help='Path to directory', type=str, default="")
 args = parser.parse_args()
 
-for e in glob.glob(args.out+'/*.ids'):
+for e in glob.glob(f"{args.out}/*.ids"):
     jfile = e.replace('ids', 'json')
     if os.path.exists(jfile) == False:
-        print("PROCESSING -> "+e)
-        with open(e, 'r') as fin, open(jfile, 'w', encoding='utf-8') as fou:
+        print(f"PROCESSING -> {e}")
+        with open(e, 'r', encoding='utf-8') as fin, open(jfile, 'w', encoding='utf-8') as fou:
             ids = []
             for line in fin:
                 ids.append(line.strip())
             fetchncheck(ids)
             for u in pullfromredis(ids):
-                fou.write(u+"\n")
+                fou.write(f"{u}\n")

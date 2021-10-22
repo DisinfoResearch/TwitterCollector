@@ -41,7 +41,7 @@ def process(fin, out):
             ids.append(j)
     for a in ids:
         if a['protected'] != True:
-            print("Processing -> "+a['screen_name'])
+            print(f"Processing -> {a['screen_name']}")
             timestr = date.today().strftime('%m%d%Y')
             following_ids = []
             follower_ids = []
@@ -49,15 +49,15 @@ def process(fin, out):
                 following_ids.append(a1)
             for a2 in twarc.follower_ids(a['id']):
                 follower_ids.append(a2)
-            with open(out+"/"+a['screen_name']+"-"+timestr+"-following.ids", 'w') as f:
+            with open(f"{out}/{a['screen_name']}-{timestr}-following.ids", 'w', encoding='utf-8') as f:
                 for u in following_ids:
                     f.write(str(u)+"\n")
-            with open(out+"/"+a['screen_name']+"-"+timestr+"-followers.ids", 'w') as f:
+            with open(f"{out}/{a['screen_name']}-{timestr}-followers.ids", 'w', encoding='utf-8') as f:
                 for u in follower_ids:
                     f.write(str(u)+"\n")
 
 parser = argparse.ArgumentParser(description='Fetch user data for list of users', epilog='P.S. Trust The Plan')
-parser.add_argument('file', help='List user ids to fetch followers & following, or stdin if not specified', type=argparse.FileType('rb'), default=sys.stdin)
+parser.add_argument('file', help='List user ids to fetch followers & following, or stdin if not specified', type=argparse.FileType('r', encoding='utf-8'), default=sys.stdin)
 parser.add_argument('out', help='Path to directory', type=str, default="")
 args = parser.parse_args()
 

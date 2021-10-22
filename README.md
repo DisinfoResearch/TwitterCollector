@@ -20,13 +20,16 @@ The *twarc* utility and python library handles and is designed to be used this w
 
 ## List of Scripts
 
-* **fetchdata-justids.py** - Takes JSON list as input and fetches the IDs of followers/following, output to directory
-* **ids2json.py** - Converts directory of IDs to JSON, using Redis to cache looked up accounts
+* **fetchdata-justids.py** - Takes JSON list as input and fetches the IDs of followers/following, output to directory.
+* **ids2json.py** - Converts directory of IDs to JSON, using Redis to cache looked up accounts.
+* **loadredis.py** - Loads a JSON list of accounts into Redis.
 * **dumpredis.py** - Dumps all the Twitter accounts from redis to *redis.json.xz*
 * **json2csv_user_directory.py** - Converts directory of JSON lists of accounts to csv format
 * **json2csv_user.py** - Convert a JSON list of accounts to CSV format.
 * **jsondiff.py** - Compares two JSON lists of accounts for differences, and displays them.
 * **jsonsame.py** - Compares two JSON lists of accounts, and displays entries that are the same.
+* **status2csv.py** - Takes output of twarc's timeline command and produces a csv of every tweet.
+* **json2urls.py** - Takes output of twarc's timeline command and produces URLs for every tweet.
 * **grabuser.sh** - Grabs the IDs and Metadata in JSON of an account's followers and following.
 
 ## Configuration

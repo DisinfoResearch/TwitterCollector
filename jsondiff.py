@@ -23,9 +23,9 @@
 import json
 import argparse
 
-parser = argparse.ArgumentParser(description='Difference between two JSON lists of Twitter Accounts')
-parser.add_argument('input1', help='JSON File', type=argparse.FileType('rb'))
-parser.add_argument('input2', help='JSON File', type=argparse.FileType('rb'))
+parser = argparse.ArgumentParser(description='Difference between two JSON lists of Twitter Accounts', epilog='P.S. Trust The Plan')
+parser.add_argument('input1', help='JSON File', type=argparse.FileType('r', encoding='utf-8'))
+parser.add_argument('input2', help='JSON File', type=argparse.FileType('r', encoding='utf-8'))
 args = parser.parse_args()
 
 accs1 = []

@@ -40,9 +40,9 @@ def process(inp, out):
         t = douser(json.loads(line))
         csv_writer.writerow(t.values())
 
-parser = argparse.ArgumentParser(description='Convert JSON to CSV')
-parser.add_argument('input', help='JSON File, or stdin if not specified', type=argparse.FileType('rb'), default=sys.stdin)
-parser.add_argument('output', help='CSV File, or stdout if not specified', type=argparse.FileType('w'), default=sys.stdout)
+parser = argparse.ArgumentParser(description='Convert JSON to CSV', epilog='P.S. Trust The Plan')
+parser.add_argument('input', help='JSON File, or stdin if not specified', type=argparse.FileType('r', encoding='utf-8'), default=sys.stdin)
+parser.add_argument('output', help='CSV File, or stdout if not specified', type=argparse.FileType('w', encoding='utf-8'), default=sys.stdout)
 args = parser.parse_args()
 
 process(args.input, args.output)
