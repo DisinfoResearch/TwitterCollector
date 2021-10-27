@@ -31,6 +31,7 @@ The *twarc* utility and python library handles and is designed to be used this w
 * **status2csv.py** - Takes output of twarc's timeline command and produces a csv of every tweet.
 * **json2urls.py** - Takes output of twarc's timeline command and produces URLs for every tweet.
 * **grabuser.sh** - Grabs the IDs and Metadata in JSON of an account's followers and following.
+* **stats.py** - Calculate and show basic account stats from JSON list of accounts
 
 ## Configuration
 The Twitter API Keys is stored as standard JSON file with the following format.
