@@ -1,3 +1,14 @@
+# TwitterByrd
+The main purpose of this is to update this to utilitze v2 of the Twitter API.  This will try to retain all functionality of the original scripts.
+
+## Requirments
+ 
+* **_see below for base requirements_**
+
+
+## New Scripts 
+* **grabuser2.sh** - Grabs the IDs and Metadata in JSON of an account's followers and following.
+
 # Twitter Collector
 Python scripts for the collection and transformations of datasets from Twitter
 
