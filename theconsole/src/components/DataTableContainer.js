@@ -20,7 +20,7 @@ export default function DataTableContainer({ username, formSubmitted }) {
       const tableColumns = parseColumnHeaders(query.data[0]);
       setColumns(tableColumns);
     }
-  }, [ query.data]);
+  }, [query.data]);
 
   return (
     <div
