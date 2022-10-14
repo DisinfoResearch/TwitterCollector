@@ -1,5 +1,7 @@
 # flask libs for api functionality
 from flask import Flask, jsonify, request
+# flask-cors for front-end requests
+from flask_cors import CORS, cross_origin
 # used to connect to Twitter APIv2
 from twarc import Twarc2, ensure_flattened
 # to read token for api
@@ -9,6 +11,9 @@ from markupsafe import escape
 
 # create app
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
 # load config keys
 with open(os.path.expanduser('~/.twitter_config'), 'r') as f:
         keys = json.load(f)
@@ -16,6 +21,7 @@ with open(os.path.expanduser('~/.twitter_config'), 'r') as f:
 twarc = Twarc2(bearer_token=keys['Bearer_Token'])
 
 @app.route('/theconsole/<username>', methods=['GET'])
+@cross_origin()
 def following_user_ids(username):
     """This endpoints main purpose is to mimic the grabuser script. """
     # find userid of the username
