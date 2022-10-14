@@ -9,6 +9,7 @@ twarc = "*"
 jsonlines = "*"
 flask = "*"
 flask-restful = "*"
+flask-cors = "*"
 
 [dev-packages]
 ipykernel = "*"
