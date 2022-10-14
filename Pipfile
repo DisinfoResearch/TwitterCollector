@@ -7,8 +7,11 @@ name = "pypi"
 redis = "*"
 twarc = "*"
 jsonlines = "*"
+flask = "*"
+flask-restful = "*"
 
 [dev-packages]
+ipykernel = "*"
 
 [requires]
 python_version = "3.9"
