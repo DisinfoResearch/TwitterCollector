@@ -1,6 +1,8 @@
 # Twitter Collector
 Python scripts for the collection and transformations of datasets from Twitter
 
+**THIS PROJECT IS CURRENTLY NONFUNCTION AND IS NOW DISCONTINUED DUE TO API CHANGES AT TWITTER ALONG WITH LEGAL CONCERNS**
+
 ## Requirements
 
 * [Redis](https://redis.io/)
